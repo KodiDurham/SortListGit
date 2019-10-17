@@ -25,8 +25,8 @@ public class CSC499_HW1 {
         int arrayLength=0;
         
         while(nameReader.hasNextLine()){
-            nameReader.nextLine();
-            arrayLength++;
+            if(nameReader.nextLine().length() > 3)
+                arrayLength++;
         }
         
         //set up name array
