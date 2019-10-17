@@ -16,6 +16,12 @@ import java.util.Scanner;
 
 public class CSC499_HW1 {
 
+    public static void printArray(Object[] array){
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+    
     public static void main(String[] args) throws Exception {
         // get file from location and set up scanner 
         File nameFile = new File("src/Sort Me.txt");
@@ -67,10 +73,8 @@ public class CSC499_HW1 {
             }
         }
         
-        //print out array
-        for (int i = 0; i < arrayLength; i++) {
-            System.out.println(nameArray[i]);
-        }
+        //print list
+        printArray(nameArray);
     }
     
 }
