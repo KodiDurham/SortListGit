@@ -15,7 +15,7 @@ import java.io.File;
 import java.util.Scanner;
 
 public class CSC499_HW1 {
-
+    
     public static void main(String[] args) throws Exception {
         // get file from location and set up scanner 
         File nameFile = new File("src/Sort Me.txt");
@@ -25,8 +25,8 @@ public class CSC499_HW1 {
         int arrayLength=0;
         
         while(nameReader.hasNextLine()){
-            nameReader.nextLine();
-            arrayLength++;
+            if(nameReader.nextLine().length() > 3)
+                arrayLength++;
         }
         
         //set up name array
@@ -42,34 +42,46 @@ public class CSC499_HW1 {
             nameArray[i]=name.trim();
         }
         
+        //sort array
+        sortArray(nameArray);
         
+        //print list
+        printArray(nameArray);
+    }
+    
+    
+    //print array contents
+    public static void printArray(Object[] array){
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+    
+    
+    //sort array contents
+    public static void sortArray(String[] array){
         //sort list by length(bubble)
-        for (int i = 0; i < arrayLength-1; i++)    
-            for (int j = 0; j < arrayLength-i-1; j++){  
-                if (nameArray[j].length() > nameArray[j+1].length()){
-                    String temp = nameArray[j];
-                    nameArray[j] = nameArray[j+1];
-                    nameArray[j+1] = temp;
+        for (int i = 0; i < array.length-1; i++)    
+            for (int j = 0; j < array.length-i-1; j++){  
+                if (array[j].length() > array[j+1].length()){
+                    String temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
                 }  
         }
         
         
         //sort list alphabetically(bubble)
-        for (int i = 0; i < arrayLength-1; i++){      
-            for (int j = 0; j < arrayLength-i-1; j++){
+        for (int i = 0; i < array.length-1; i++){      
+            for (int j = 0; j < array.length-i-1; j++){
                 //skips if lengths are not equal
-                if(nameArray[j].length() == nameArray[j+1].length())
-                    if (nameArray[j].compareToIgnoreCase(nameArray[j+1]) > 0){
-                        String temp = nameArray[j];
-                        nameArray[j] = nameArray[j+1];
-                        nameArray[j+1] = temp;
+                if(array[j].length() == array[j+1].length())
+                    if (array[j].compareToIgnoreCase(array[j+1]) > 0){
+                        String temp = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
                     }   
             }
-        }
-        
-        //print out array
-        for (int i = 0; i < arrayLength; i++) {
-            System.out.println(nameArray[i]);
         }
     }
     
