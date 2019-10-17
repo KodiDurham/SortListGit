@@ -40,7 +40,7 @@ public class CSC499_HW1 {
         while(nameReader.hasNextLine()){
             String name = nameReader.nextLine();
             
-            if(nameReader.nextLine().length() > 0){
+            if(name.length() > 0){
                 //remove the beginning and trailing blank spaces
                 nameArray[nameCount]=name.trim();
                 nameCount++;
