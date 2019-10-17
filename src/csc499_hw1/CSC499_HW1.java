@@ -22,24 +22,29 @@ public class CSC499_HW1 {
         Scanner nameReader = new Scanner(nameFile);
         
         //set up and count the length for array
-        int arrayLength=0;
+        int nameCount=0;
         
         while(nameReader.hasNextLine()){
-            if(nameReader.nextLine().length() > 3)
-                arrayLength++;
+            if(nameReader.nextLine().length() > 0)
+                nameCount++;
         }
         
         //set up name array
-        String[] nameArray=new String[arrayLength];
+        String[] nameArray=new String[nameCount];
         
-        //reset scanner to read from again
+        //reset scanner to read from again and the counter to put names in 
         nameReader = new Scanner(nameFile);
+        nameCount=0;
         
         //get the names and put them in list
-        for (int i = 0; i < arrayLength; i++) {
+        while(nameReader.hasNextLine()){
             String name = nameReader.nextLine();
-            //remove the beginning and trailing blank spaces
-            nameArray[i]=name.trim();
+            
+            if(name.length() > 0){
+                //remove the beginning and trailing blank spaces
+                nameArray[nameCount]=name.trim();
+                nameCount++;
+            }
         }
         
         //sort array
