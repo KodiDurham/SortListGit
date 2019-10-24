@@ -11,14 +11,17 @@ the name then alphabetically.
 
 package csc499_hw1;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CSC499_HW1 {
     
     public static void main(String[] args) throws Exception {
         // get file from location and set up scanner 
-        File nameFile = new File("src/Sort Me.txt");
+        File nameFile = new File("sort Me.txt");
         Scanner nameReader = new Scanner(nameFile);
         
         //set up and count the length for array
@@ -56,10 +59,15 @@ public class CSC499_HW1 {
     
     
     //print array contents
-    public static void printArray(Object[] array){
+    public static void printArray(Object[] array) throws IOException{
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
         for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+            writer.write(""+array[i]);
+            
+            if(i<array.length-1)
+                writer.write("\n");
         }
+        writer.close();
     }
     
     
