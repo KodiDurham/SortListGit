@@ -20,6 +20,27 @@ import java.util.Scanner;
 public class CSC499_HW1 {
     
     public static void main(String[] args) throws Exception {
+        String order="";
+        
+        try{
+            order=args[0];
+            order=order.toLowerCase().trim();
+        }catch(Exception e){
+            
+        }
+        
+        
+        if(!(order.equalsIgnoreCase("ascend")|| order.equalsIgnoreCase("descend"))){
+            System.out.print("Use ascending order? y/n");
+            Scanner input=new Scanner(System.in);
+            String yOrN= input.nextLine();
+            if(yOrN.charAt(0)=='n'||yOrN.charAt(0)=='N'){
+                order="descend";
+            }else{
+                order="ascend";
+            }
+        }
+        
         // get file from location and set up scanner 
         File nameFile = new File("sort Me.txt");
         Scanner nameReader = new Scanner(nameFile);
@@ -51,7 +72,7 @@ public class CSC499_HW1 {
         }
         
         //sort array
-        sortArray(nameArray);
+        sortArray(nameArray,order);
         
         //print list
         printArray(nameArray);
@@ -72,17 +93,27 @@ public class CSC499_HW1 {
     
     
     //sort array contents
-    public static void sortArray(String[] array){
+    public static void sortArray(String[] array,String order){
         //sort list by length(bubble)
-        for (int i = 0; i < array.length-1; i++)    
-            for (int j = 0; j < array.length-i-1; j++){  
-                if (array[j].length() > array[j+1].length()){
-                    String temp = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
-                }  
+        if(order.equalsIgnoreCase("ascend")){
+            for (int i = 0; i < array.length-1; i++)    
+                for (int j = 0; j < array.length-i-1; j++){  
+                    if (array[j].length() > array[j+1].length()){
+                        String temp = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
+                    }  
+            }
+        }else{
+            for (int i = 0; i < array.length-1; i++)    
+                for (int j = 0; j < array.length-i-1; j++){  
+                    if (array[j].length() < array[j+1].length()){
+                        String temp = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
+                    }  
+            }
         }
-        
         
         //sort list alphabetically(bubble)
         for (int i = 0; i < array.length-1; i++){      
