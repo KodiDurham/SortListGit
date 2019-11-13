@@ -1,4 +1,4 @@
 language: java
 script:
-    - cd Batchtest
-    - bash Bashtest.sh
+    - cd  BatchTest
+    - bash bashtest.sh
