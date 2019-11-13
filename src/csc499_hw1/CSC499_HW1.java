@@ -42,7 +42,7 @@ public class CSC499_HW1 {
         }
         
         // get file from location and set up scanner 
-        File nameFile = new File("sort Me.txt");
+        File nameFile = new File("Sort Me.txt");
         Scanner nameReader = new Scanner(nameFile);
         
         //set up and count the length for array
